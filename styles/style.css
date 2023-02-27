@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font: 13px Helvetica, Arial;
+}
+.entry {
+  background: #000;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.entry input {
+  border: 0;
+  padding: 1rem;
+  width: 90%;
+  margin-right: 0.5%;
+  border-radius: 10px;
+}
+.entry button {
+  width: 9%;
+  background: tomato;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 5px 4px 4px white;
+}
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#messages li {
+  padding: 5px 10px;
+}
+#messages li:nth-child(odd) {
+  background: lightskyblue;
+  margin:1rem;
+  margin-right: 50vh;
+  border-radius: 10px 10px 10px 0;
+  box-shadow: 5px 4px 4px gray;
+}
+
+#messages li:nth-child(even) {
+  background: lightgreen;
+  margin: 1rem;
+  margin-left: 50vh;
+  border-radius: 10px 10px 0 10px;
+  box-shadow: 5px 4px 4px gray;
+}

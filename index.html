@@ -1,0 +1,100 @@
+<!-- CLIENT  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Technical test EVOGUE - Chat box in Javascript</title>
+    <meta
+      name="Description"
+      content="Chat app with Javascript and websockets."
+    />
+    <meta name="author" content="Wendy Baqué" />
+    <meta
+      name="Keywords"
+      content="chat, app, javascript, evogue, websocket, wocket, messages"
+    />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./styles/style.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font: 13px Helvetica, Arial;
+      }
+      .entry {
+        background: #000;
+        padding: 1rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      .entry input {
+        border: 0;
+        padding: 1rem;
+        width: 90%;
+        margin-right: 0.5%;
+        border-radius: 10px;
+      }
+      .entry button {
+        width: 9%;
+        background: tomato;
+        color: white;
+        font-weight: bold;
+        border: none;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 5px 4px 4px white;
+      }
+      #messages {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      #messages li {
+        padding: 5px 10px;
+      }
+      #messages li:nth-child(odd) {
+        background: lightskyblue;
+        margin:1rem;
+        margin-right: 50vh;
+        border-radius: 10px 10px 10px 0;
+        box-shadow: 5px 4px 4px gray;
+      }
+
+      #messages li:nth-child(even) {
+        background: lightgreen;
+        margin: 1rem;
+        margin-left: 50vh;
+        border-radius: 10px 10px 0 10px;
+        box-shadow: 5px 4px 4px gray;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      const send =  () => {
+        const text = document.getElementById("message").value;
+        socket.emit("chat message", text);
+      };
+
+      const receive =  (msg) => {
+        const li = document.createElement("li");
+        li.innerText = msg;
+        document.getElementById("messages").appendChild(li);
+      };
+      socket.on("chat message", receive);
+    </script>
+    <div>
+      <ul id="messages"></ul>
+      <div class="entry">
+        <input id="message" /> 
+        <button onclick="send()">Send</button>
+      </div>
+    </div>
+  </body>
+</html>
